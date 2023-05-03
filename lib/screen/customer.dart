@@ -1,5 +1,4 @@
-import 'package:discount/screen/newcustomer.dart';
-import 'package:flutter/material.dart';
+part of 'package:discount/utils/imports.dart';
 
 class CustomersList extends StatefulWidget {
   const CustomersList({super.key});
