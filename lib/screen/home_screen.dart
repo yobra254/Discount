@@ -1,6 +1,13 @@
 import 'package:discount/screen/signin_screen.dart';
+import 'package:discount/utils/color_utils.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:quickeydb/quickeydb.dart';
+import 'package:discount/utils/imports.dart';
+
+import '../model/customers.dart';
+//import 'package:discount/model/customers.dart';
+import 'customer.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -10,20 +17,82 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  Future<void> createData() async {
+    QuickeyDB.getInstance!<CustomersSchema>()!.create(
+      Customers(
+          id: 1, fname: '', lname: '', company: '', created_at: DateTime.now()),
+    );
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    createData();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Center(
-      child: ElevatedButton(
-        child: Text("Logout"),
-        onPressed: () {
-          FirebaseAuth.instance.signOut().then((value) {
-            print("Signed Out");
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => SignInScreen()));
-          });
-        },
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(colors: [
+            hexStringToColor("CB2B93"),
+            hexStringToColor("9546C4"),
+            hexStringToColor("5E61F4"),
+          ], begin: Alignment.topCenter, end: Alignment.bottomCenter),
+        ),
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.fromLTRB(
+                210, MediaQuery.of(context).size.height * 0.2, 80, 490),
+            child: Column(
+              children: <Widget>[
+                ElevatedButton(
+                  onPressed: () {
+                    FirebaseAuth.instance.signOut().then((value) {
+                      print("Signed Out");
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => SignInScreen(),
+                          ));
+                    });
+                  },
+                  child: const Text("Logoutt"),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => CustomersList(),
+                          ));
+                    },
+                    child: const Text("Customers"))
+              ],
+            ),
+          ),
+        ),
       ),
-    ));
+    );
   }
 }
+
+
+// return Scaffold(
+//         body: Center(
+//       child: ElevatedButton(
+//         child: Text("Logout"),
+//         onPressed: () {
+//           FirebaseAuth.instance.signOut().then((value) {
+//             print("Signed Out");
+//             Navigator.push(context,
+//                 MaterialPageRoute(builder: (context) => SignInScreen()));
+//           });
+//         },
+//       ),
+//     ));

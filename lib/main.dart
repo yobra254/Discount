@@ -1,10 +1,24 @@
 import 'package:discount/screen/signin_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:quickeydb/quickeydb.dart';
+
+import 'model/customers.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+
+  await QuickeyDB.initialize(
+    persist: true,
+    dbVersion: 1,
+    dataAccessObjects: [
+      CustomersSchema(),
+      DiscountsSchema(),
+    ],
+    dbName: 'pos',
+  );
+
   runApp(const MyApp());
 }
 
