@@ -1,9 +1,9 @@
-import 'package:discount/screen/signin_screen.dart';
+
+import 'package:discount/utils/imports.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:quickeydb/quickeydb.dart';
 
-import 'model/customers.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -13,7 +13,7 @@ void main() async {
     persist: true,
     dbVersion: 1,
     dataAccessObjects: [
-      CustomersSchema(),
+      CustomerSchema(),
       DiscountsSchema(),
     ],
     dbName: 'pos',

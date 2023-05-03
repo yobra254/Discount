@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+part of 'package:discount/utils/imports.dart';
 
 Image logoWidget(String imageName) {
   return Image.asset(

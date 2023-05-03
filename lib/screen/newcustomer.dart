@@ -1,8 +1,4 @@
-import 'package:discount/model/customers.dart';
-import 'package:flutter/material.dart';
-import 'package:discount/utils/imports.dart';
-import 'package:quickeydb/quickeydb.dart';
-import 'package:discount/screen/home_screen.dart';
+part of 'package:discount/utils/imports.dart';
 
 class NewCustomer extends StatefulWidget {
   const NewCustomer({super.key});
@@ -13,6 +9,24 @@ class NewCustomer extends StatefulWidget {
 
 class _NewCustomerState extends State<NewCustomer> {
   String? fname, lname, company;
+
+  Future<void> createData(String fname, String lname, String company, DateTime createdAt) async {
+    QuickeyDB.getInstance!<CustomersSchema>()!.create(
+      Customers(
+        id: 1,
+        fname: '',
+        lname: '',
+        company: '',
+        created_at: DateTime.now(),
+      ),
+    );
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
   //int? hours;
 
   @override
@@ -47,8 +61,7 @@ class _NewCustomerState extends State<NewCustomer> {
               height: 20,
             ),
             TextFormField(
-                decoration:
-                    const InputDecoration(hintText: "Enter Customer Company"),
+                decoration: const InputDecoration(hintText: "Enter Customer Company"),
                 onChanged: (String value) {
                   setState(() {
                     company = value;
@@ -59,7 +72,7 @@ class _NewCustomerState extends State<NewCustomer> {
             ),
             ElevatedButton(
                 onPressed: () {
-                  createData();
+                  createData("", "", "", DateTime.now());
                 },
                 child: const Text("Save"))
           ],

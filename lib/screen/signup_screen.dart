@@ -1,9 +1,4 @@
-import 'package:discount/reusable_widgets/reusable_widgets.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
-
-import '../utils/color_utils.dart';
-import 'home_screen.dart';
+part of 'package:discount/utils/imports.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});

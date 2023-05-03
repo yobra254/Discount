@@ -1,13 +1,4 @@
-import 'package:discount/screen/signin_screen.dart';
-import 'package:discount/utils/color_utils.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
-import 'package:quickeydb/quickeydb.dart';
-import 'package:discount/utils/imports.dart';
-
-import '../model/customers.dart';
-//import 'package:discount/model/customers.dart';
-import 'customer.dart';
+part of 'package:discount/utils/imports.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});

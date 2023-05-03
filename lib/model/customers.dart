@@ -1,6 +1,4 @@
-import 'package:quickeydb/configs/converter.dart';
-import 'package:quickeydb/configs/data_access_object.dart';
-//import 'package:quickeydb/quickeydb.dart';
+part of 'package:discount/utils/imports.dart';
 
 class Customers {
   int? id;
