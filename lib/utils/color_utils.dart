@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+part of 'package:discount/utils/imports.dart';
 
 hexStringToColor(String hexColor) {
   hexColor = hexColor.toUpperCase().replaceAll("#", "");
