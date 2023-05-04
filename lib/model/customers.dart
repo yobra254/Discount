@@ -119,7 +119,7 @@ class DiscountsSchema extends DataAccessObject<Discounts> {
             product         TEXT NOT NULL,
             unitPrice       REAL     default '0',
             discount        REAL     default '0',
-            created_at      datetime,
+            created_at      datetime
           )
           ''',
           converter: Converter(
