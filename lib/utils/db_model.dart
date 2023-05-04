@@ -18,22 +18,22 @@ class CustomersModel {
   });
 
   Map<String, dynamic> toMap() => {
-    'id': id,
-    'name': name,
-    'email': email,
-    'company': company,
-    'status': status,
-    'created_at': created_at,
-  };
+        'id': id,
+        'name': name,
+        'email': email,
+        'company': company,
+        'status': status,
+        'created_at': created_at,
+      };
 
   Map<String, dynamic> toTableMap() => {
-    'id': id,
-    'name': name,
-    'email': email,
-    'company': company,
-    'status': status,
-    'created_at': created_at,
-  };
+        'id': id,
+        'name': name,
+        'email': email,
+        'company': company,
+        'status': status,
+        'created_at': created_at,
+      };
 
   CustomersModel.fromMap(Map<String?, dynamic> map)
       : id = map['id'],
@@ -44,22 +44,23 @@ class CustomersModel {
         created_at = map['created_at'];
 }
 
-class CustomerSchema extends DataAccessObject<CustomersModel>{
-  CustomerSchema(): super(
-    '''
+class CustomerSchema extends DataAccessObject<CustomersModel> {
+  CustomerSchema()
+      : super(
+          '''
           CREATE TABLE customers (
             id              INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
             name            TEXT NOT NULL,
             email           TEXT NOT NULL,
             company         TEXT NOT NULL,
             status          TEXT NOT NULL,
-            created_at      datetime,
+            created_at      datetime
           )
           ''',
-    converter: Converter(
-      encode: (customer) => CustomersModel.fromMap(customer),
-      decode: (customer) => customer!.toMap(),
-      decodeTable: (customer) => customer!.toTableMap(),
-    ),
-  );
+          converter: Converter(
+            encode: (customer) => CustomersModel.fromMap(customer),
+            decode: (customer) => customer!.toMap(),
+            decodeTable: (customer) => customer!.toTableMap(),
+          ),
+        );
 }
